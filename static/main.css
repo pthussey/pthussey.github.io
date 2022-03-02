@@ -119,6 +119,7 @@ a.sm-link:hover {
 .btn {
   border-color: #dddddd;
   background: #ffffff;
+  margin-bottom: 20px;
 }
 
 .resources-title {
