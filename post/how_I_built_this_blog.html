@@ -72,7 +72,7 @@
 <p>In this post I will share my learning experience as I built this blog using the <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> web development framework. Just a heads up... this is not tutorial per se. I will not be teaching step-by-step what to do. Instead, I'll be writing from the perspective of a learner. I will share details on the resources I used, and how I solved some of the problems I faced, while learning everything I needed to know. If you are also trying to learn how to do this, I hope what I share here will be helpful.  </p>
 <p>My initial motivation for creating this blog from scratch using Flask actually did not come from a strong desire to build my own website, and my main programming interest is in data analytics, not web development. But I'm getting to the point in my analytics learning journey where I want to learn more about how to build and deploy data dashboards using Python. The deployment part of this involves elements of web development so I thought building a blog from scratch would be a good way to learn the basics of web development I would need to do dashboard deployment.  </p>
 <p>Picking up the basics of web development also has benefits in my work as a recruiter. The better I understand these technologies, the better I can become at matching great engineers with roles they can excel in.  </p>
-<p>All the code used to build this blog can be found in <a href="https://github.com/pthussey/flaskBlogCode">this repository</a> on my GitHub. But, if you really want to learn this stuff, I recommend not cloning this repo and instead just using it as reference if you get well-and-truly stuck. Even then, there is great value in spending the time to try and solve the problems you run into yourself.  </p>
+<p>All the code used to build this blog can be found in <a href="https://github.com/pthussey/FlaskBlogCode">this repository</a> on my GitHub. But, if you really want to learn this stuff, I recommend not cloning this repo and instead just using it as reference if you get well-and-truly stuck. Even then, there is great value in spending the time to try and solve the problems you run into yourself.  </p>
 <p>Anyways, I have a lot to cover in this post, so let's get into it.  </p>
 <p>First, an overview of my learning in relation to this project.  </p>
 <p><strong>What I knew when I started</strong><br />
@@ -201,7 +201,7 @@
 <p><em>Tough Problem #3 - Getting the sticky footer to actually stick</em></p>
 <p>I added the HTML for my sticky footer from <a href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">this example</a> I found on the Bootstrap site, but it would not adjust to the length of the content on the page, so it wasn't really sticking properly. This kind of Bootstrap example is interesting in that it's simply provided as a working webpage with no additional explantion. You have to use the browser inspection tool to view the code and then cut and paste it. My problem was that I had not used the inspection tool much before so I didn't know where to look to find eveything I needed to make use of the example. So, once again I scoured Stackoverflow looking for solutions and eventually found <a href="https://stackoverflow.com/a/49382867">the answer I needed</a>.  </p>
 <p>I found out that the reason my code wasn't working was that I hadn't checked in the <code>head</code> part of the example webpage's HTML. In there was a <code>link</code> to some custom CSS that has to be added to get the footer to stick properly.</p>
-<div class="codehilite"><pre><span></span><code><span class="c">&lt;!-- Custom styles for this template --&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="cm">&lt;!-- Custom styles for this template --&gt;</span>
 <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;sticky-footer.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
 </code></pre></div>
 
@@ -210,10 +210,10 @@
 <p>Although finding the solution to this problem took quite a while, I'm actually glad I encountered it because I learned a lot about how to use the browser inspection tool while searching for answers, and I began using it a lot more from this point on. It really is extremely useful.  </p>
 <hr />
 <p>Once I had the footer set up, I used <a href="https://fontawesome.com/">Font Awesome</a> icons for my LinkedIn and Github links. The only minor issue I had was with some annoying lines showing up next to my links. All I had to do to get rid of those was to disable the default text decoration on the links.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">a</span><span class="p">.</span><span class="nc">sm-link</span> <span class="p">{</span>
-  <span class="k">color</span><span class="p">:</span> <span class="mh">#444444</span><span class="p">;</span>
-  <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">a</span><span class="p">.</span><span class="nc">sm-link</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#444444</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>Also note that to use Font Awesome you have to first sign up on the website. Then you get a snippet of code to add to your site.  </p>
