@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Optional meta description and keyword tags -->
+    
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/cc46254517.js" crossorigin="anonymous"></script>
+    
+    <!-- Additional CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/pygs.css">
+
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+
+    
+        <title>How I built this website and what I learned in the process - PaulHussey.kr</title>
+    
+
+</head>
+  <body>
+    <header class="site-header">
+      <nav id="my_nav" class="navbar navbar-expand-lg navbar-light bg-nav-footer">
+        <a class="navbar-brand" href="/">PaulHussey.kr</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/about.html">About</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/archive.html">Archive</a>
+              </li>
+            
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        
+      </div>
+    </header>
+     
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            
+    <br>
+    <h3 class="article-title">How I built this website and what I learned in the process</h3>
+    <small class="author-date text-muted">Paul Hussey | 2022-02-14</small>
+    <div style="line-height:80%;">
+  <br>
+</div>
+
+<p>In this post I will share my learning experience as I built this website using the <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> web development framework. Just a heads up... this is not tutorial per se. I will not be teaching step-by-step what to do. Instead, I'll be writing from the perspective of a learner. I will share details on the resources I used, and how I solved some of the problems I faced, while learning everything I needed to know. If you are also trying to learn how to do this, I hope what I share here will be helpful.  </p>
+<p>My initial motivation for creating this website from scratch using Flask actually did not come from a strong desire to build my own site, and my main programming interest is in data analytics, not web development. But I'm getting to the point in my analytics learning journey where I want to learn more about how to build and deploy data dashboards using Python. The deployment part of this involves elements of web development so I thought building a website from scratch would be a good way to learn the basics of web development I would need to do dashboard deployment.  </p>
+<p>Picking up the basics of web development also has benefits in my work as a recruiter. The better I understand these technologies, the better I can become at matching great engineers with roles they can excel in.  </p>
+<p>All the code used to build this site can be found in <a href="https://github.com/pthussey/FlaskWebsiteCode">this repository</a> on my GitHub. But, if you really want to learn this stuff, I recommend not cloning this repo and instead just using it as reference if you get well-and-truly stuck. Even then, there is great value in spending the time to try and solve the problems you run into yourself.  </p>
+<p>Anyways, I have a lot to cover in this post, so let's get into it.  </p>
+<p>First, an overview of my learning in relation to this project.  </p>
+<p><strong>What I knew when I started</strong><br />
+- Intermediate level Python<br />
+- No experience in web development<br />
+- Only a very basic understanding of HTML  </p>
+<p><strong>What I knew by the end</strong><br />
+- How to set up the framework of an application using Flask<br />
+- A basic understanding of back-end and front-end web development<br />
+- The basics of HTML, CSS, and Bootstrap<br />
+- How to use the 'Inspect' browser tool to analyze the structure of webpages  </p>
+<p><strong>How I plan to use what I learned</strong><br />
+- Use my new understanding of web development in building data dashboards<br />
+- Use my new site to post on topics of interest to me  </p>
+<p><strong>What I plan to learn next</strong><br />
+- How to deploy this website online<br />
+- Interactive plotting using Plotly and/or Bokeh<br />
+- Building and deploying data dashboards using Dash and/or Streamlit<br />
+- Web-scraping using libraries like Beautiful Soup and Selenium<br />
+&nbsp; * My now better understanding of HTML and webpage structure should help with learning this  </p>
+<p><strong>Why Flask?</strong>  </p>
+<p>As explained above, my main purpose in building this site was to learn the basics of web development, so I did not want to use a platform that did most of the coding for me. That obviously rules out services like Wordpress. I also looked at one other platform option called Pelican that looked interesting, but it seemed to abstract away a lot of coding which again wouldn't give me the opportunity to really learn the nuts and bolts of web development.  </p>
+<p>The only programming language I know well is Python, and there are two main Python-based web development frameworks to choose from: Flask and Django. I read up on both, and honestly it seemed like kind of a toss-up when it comes to which one to choose. However, I made the choice to use Flask because a number of the articles I read comparing the two described Flask as better for learning the basics of web development which was what I wanted to do. It was comments like the one below, from <a href="https://hackr.io/blog/flask-vs-django">this site</a>, that led me to choose Flask:  </p>
+<blockquote>
+<p>"Flask is a light-weight, extensible framework. If you want to dig more into coding and learn core concepts, Flask helps you understand how each component from the back-end works to get a simple web application up and running."  </p>
+</blockquote>
+<p>Perfect, just what I was looking for. 😄  </p>
+<p><strong>Goal for my website project</strong>  </p>
+<p>Before getting started, I thought about what kind of functionality I wanted to have. This is just a personal site, so I didn't feel like I needed to have functionality for managing users, which simplifies things a lot. Not having to set up functionality for managing users means there is no need to use forms to collect information and a database is not really needed on the back-end either. I suppose I could have learned more had I tried to set all this up, but I decided for my current purposes and learning goals this was more than I needed.  </p>
+<p>One thing I knew for sure I did want though was the ability to use Markdown to create posts to put up on my site. Using Markdown makes it possible to include things like blockquotes and formatted code blocks, without having to struggle with writing in HTML.  </p>
+<p>I also wanted my site to be mobile responsive and easy to navigate. And I wanted to be able to include links to my profiles on LinkedIn and Github.   </p>
+<p>So, basically, my end goal was to have a user-friendly site for my own personal use, on which I could share posts written in Markdown and visitors could easily find my online profiles to connect with me.  </p>
+<p><strong>Learning the basics of Flask</strong>  </p>
+<p>I went back to one of my favorite Python learning resources, Corey Schafer's tutorials, to learn the basics of Flask. He has a <a href="https://coreyms.com/development/python/python-flask-tutorials-full-series">full Flask tutorial series</a> on his website that covers everything you need to know to build an entire full functioning web application using Flask. These tutorials went far beyond what I needed for my modest site so I really only made use of the first two videos but I watched these repeatedly to understand it well.    </p>
+<p>I also like to have a book to use as a reference when I'm learning a new tool, and for Flask I used <a href="https://www.oreilly.com/library/view/flask-web-development/9781491947586/">Flask Web Development</a> by Miguel Grinberg. This book as well goes far beyond what I needed at this point so I only read the first few chapters. But I read over these chapters multiple times to try and grasp how it works as best I could.  </p>
+<p>And of course you should always refer to the official documentation for a package as you are using it. If you are just starting out with Flask, you should be able to find everything you need in the <a href="https://flask.palletsprojects.com/en/2.0.x/quickstart/">Quickstart</a> section.  </p>
+<p>Additionally, if you are going to use Flask to build anything beyond a simple "Hello World" type page, you also need to learn how to use the Jinja templating engine that is used inside Flask applications to build a cohesive set of pages. I found that the <a href="https://jinja.palletsprojects.com/templates/">Template Designer Documentation</a> on the Jinja website had everything I needed to understand how to use this. Also, as a side note, I really like Jinja. It's syntax and usage mirrors that of Python, and you can use conditionals and control structures to do a lot of things that you would normally have to use Javascript for. Below I give an example of a problem I had that was solved using Jinja code instead of Javascript. Anything that works like Python and can save me from having to learn Javascript is wonderful in my book. 👍  </p>
+<p>Using these resources I was able to learn the basics of Flask, and with them I feel I'm well equipped to learn more in the future if I choose to do so.  </p>
+<p><strong>Building the website</strong>  </p>
+<p>In this section I'll cover the steps I took to build my site. I'll explain how I used different resources and how I solved some of the tougher problems I encountered along the way.  </p>
+<p>First off, before getting into a project like this, if you don't have any prior experience using virtual environments, I strongly recommend that you take some time to learn how to set up and use them. Having your project isolated in a virtual environment makes your code reproducible for others, and, most importantly for a website project like this, it's necessary if you want to actually deploy it on the web. I personally use <a href="https://docs.conda.io/projects/conda/en/latest/">conda</a>, but you can use others like <a href="https://docs.python.org/3/library/venv.html">venv</a> too. There are plenty of free tutorials out there you can watch to learn about virtual environments.  </p>
+<p>I built the basic layout of my website using a fair amount of the code provided by Corey Schafer in the notes below his Flask tutorial videos that I mentioned above. However, to get the structure and look I wanted, I had to remove parts I didn't need and make a lot of changes and additions to the code. The thing is I knew very little about HTML and CSS, so at this point I took a bit of a detour to learn this stuff. I found that going through the <a href="https://www.w3schools.com/">W3 Schools</a> tutorials was a good way to learn the basics, and from there I just kind of played around a lot with HTML and CSS in my website to practice.     </p>
+<p>After building the basic layout of my site, I started working on customizing it for my purposes. Mainly I wanted to be able to be create posts using Markdown that included code highlighting, and so I set out to find examples that were similar to what I was trying to set up.  </p>
+<p>These two short tutorials below both suggested using <a href="https://flask-flatpages.readthedocs.io/en/latest/">Flask-FlatPages</a> to enable the kind of functionality I was looking for, and they were of great help to me:  </p>
+<ul>
+<li><a href="https://vkaustubh.github.io/blog/geek/2020-02-23-blogging-with-flask.html">Blogging with Flask</a> by Kaustubh Vaghmare<div style="line-height:80%;"><br></div></li>
+<li><a href="https://www.jeffyang.io/blog/build_a_flask_website/">Build your own Website with Flask</a> by Jeff Yang  </li>
+</ul>
+<p>Note that to get code highlighting to work you need to have a package called pygments installed in your environment. Then you can also choose a style for your highlighting, save it in a CSS file, and link to it in your base HTML template. Jeff Yang's tutorial referenced above has a good explanation on how to set this up.  </p>
+<p>These are the Flatpages configurations that I needed to use to get the functionality I wanted.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">FLATPAGES_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;.md&#39;</span>
+<span class="n">FLATPAGES_MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fenced_code&#39;</span><span class="p">,</span> <span class="s1">&#39;codehilite&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>However, it was when I was trying to set up these configurations that I encountered my first tough problem that took me quite a while to solve.  </p>
+<hr />
+<p><em>Tough Problem #1 - FlatPages configuration not working</em> </p>
+<p>As seems to be the case with many problems in programming, at least for me, the solution for this one turned out to be very simple, but FINDING the solution took a very long time.  </p>
+<p>I was using code suggested in the two tutorials referenced above, but for some reason my configurations were just not getting recognized. I referred to the relevant FlatPages docs and Googled for a long time but just could not find a solution. Finally, after a lot of searching, I found <a href="https://stackoverflow.com/a/62463756">an answer</a> on Stackoverflow that got this to work for me. But I still wanted to know why the code from the tutorials wasn't working. Eventually I tried rearranging the code a bit and discovered that the code from the tutorials worked as long as it was placed in the right order. Neither of the tutorials I was using explained this part clearly, and I think one of them had an error in that part of the code.   </p>
+<p>So, in the end, I had two ways to get this to work.  </p>
+<p>Solution 1: use <code>app.config</code>  </p>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Configuration settings for FLATPAGES</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FLATPAGES_EXTENSION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;.md&#39;</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FLATPAGES_MARKDOWN_EXTENSIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fenced_code&#39;</span><span class="p">,</span> <span class="s1">&#39;codehilite&#39;</span><span class="p">]</span>
+
+<span class="c1"># Initialize flatpages</span>
+<span class="n">flatpages</span> <span class="o">=</span> <span class="n">FlatPages</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Solution 2: use <code>app.config.from_object(__name__)</code><br />
+* Just be sure to define the configuration variables BEFORE calling the configuration method  </p>
+<div class="codehilite"><pre><span></span><code><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Configuration settings for FLATPAGES</span>
+<span class="n">FLATPAGES_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;.md&#39;</span>
+<span class="n">FLATPAGES_MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fenced_code&#39;</span><span class="p">,</span> <span class="s1">&#39;codehilite&#39;</span><span class="p">]</span>
+
+<span class="c1"># Configure from your application python file</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Initialize flatpages</span>
+<span class="n">flatpages</span> <span class="o">=</span> <span class="n">FlatPages</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</code></pre></div>
+
+<p>As I understand it, you can also set app configurations from a separate file, and this is probably the preferred way to go if your app is more complex and uses sensitive values like secret keys, but for a simple static site without a database using one of the above methods should suffice.  </p>
+<hr />
+<p>Once I had the layout and the functionality I wanted set up, I moved on to making some user experience improvements. In particular, I wanted to have a responsive nav bar and footer on my site so users could easily navigate regardless of the kind of device they are using. This kind of stuff is the realm of Bootstrap.  </p>
+<p>Fortunately, it is pretty easy to add and use Bootstrap. All you have to do is cut and paste the code needed to get Bootstrap components to work from the <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/#quick-start">Quick start</a> section of the docs. You can find the code for all kinds of components on the Bootstrap site. I used Bootstrap version 4.0 for everything because a lot of the tutorials I was referring to used this version. You can also use the more recent 5.0 version, but I would just be careful not to mix up the versions you use in your code.  </p>
+<p>There are quite a lot of tutorials on YouTube for learning Bootstrap. I liked <a href="https://www.youtube.com/watch?v=5GcQtLDGXy8">this one</a> for a quick overview of the basics, and I found the videos in <a href="https://www.youtube.com/playlist?list=PLqabIl8dx2wocDgvU7lEirYjNNrm6iXGb">this series</a> helpful too. There are 85 videos in the series, but I only used a few of them when building my nav bar and footer.  </p>
+<p>Honestly, I didn't learn Bootstrap all that deeply, or HTML / CSS for that matter, just enough to get done what I needed for my site. But I feel like now I've got a decent foundation if I want to do more with this kind of front-end stuff in the future.  </p>
+<p>Most likely due to the fact that I did not learn this stuff too deeply, I did run into a couple of tough problems in getting my nav bar and footer to work the way I wanted.  </p>
+<hr />
+<p><em>Tough Problem #2 - Getting the nav bar active class to work</em>  </p>
+<p>I chose a pretty simple nav bar from the <a href="https://getbootstrap.com/docs/4.0/components/navbar/">nav bar components section</a> of the Bootstrap site and cut and pasted the code into the base template for my site. I then changed the hrefs to the ones for the pages on my site, but, upon doing this, when I clicked on the nav items they no longer showed up in bold to indicate the active page. I searched for a long time to find a way to get this to work, but all the solutions I found described ways to solve this problem using Javascript, which I have zero knowledge of... and zero desire to spend time learning.</p>
+<p>Finally, I stumbled upon <a href="https://stackoverflow.com/questions/66513590/changing-active-class-when-clicking-on-new-page-without-refreshing">a brilliant question / answer</a> that used Jinja to conditionally add the <code>active</code> class based on the path of the current request. To be able to access the path you have to add <code>request</code> to your flask imports.  </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">request</span>
+</code></pre></div>
+
+<p>Then you can use Jinja logic in the HTML for the nav bar to add the <code>active</code> class to the current page in accordance with the path.  </p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;navbar-nav&quot;</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-item&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-link active&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span><span class="n">Home</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;sr-only&quot;</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-item&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-link&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span><span class="n">Home</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s1">&#39;/about&#39;</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-item&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-link active&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/about&quot;</span><span class="o">&gt;</span><span class="n">About</span> <span class="o">&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;sr-only&quot;</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-item&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav-link&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/about&quot;</span><span class="o">&gt;</span><span class="n">About</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<hr />
+<hr />
+<p><em>Tough Problem #3 - Getting the sticky footer to actually stick</em></p>
+<p>I added the HTML for my sticky footer from <a href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">this example</a> I found on the Bootstrap site, but it would not adjust to the length of the content on the page, so it wasn't really sticking properly. This kind of Bootstrap example is interesting in that it's simply provided as a working webpage with no additional explantion. You have to use the browser inspection tool to view the code and then cut and paste it. My problem was that I had not used the inspection tool much before so I didn't know where to look to find eveything I needed to make use of the example. So, once again I scoured Stackoverflow looking for solutions and eventually found <a href="https://stackoverflow.com/a/49382867">the answer I needed</a>.  </p>
+<p>I found out that the reason my code wasn't working was that I hadn't checked in the <code>head</code> part of the example webpage's HTML. In there was a <code>link</code> to some custom CSS that has to be added to get the footer to stick properly.</p>
+<div class="codehilite"><pre><span></span><code><span class="cm">&lt;!-- Custom styles for this template --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;sticky-footer.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>The <code>href</code> links to <a href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css">this page</a> that has the necessary CSS.  </p>
+<p>After I added this CSS to the custom CSS for my site, it worked.  </p>
+<p>Although finding the solution to this problem took quite a while, I'm actually glad I encountered it because I learned a lot about how to use the browser inspection tool while searching for answers, and I began using it a lot more from this point on. It really is extremely useful.  </p>
+<hr />
+<p>Once I had the footer set up, I used <a href="https://fontawesome.com/">Font Awesome</a> icons for my LinkedIn and Github links. The only minor issue I had was with some annoying lines showing up next to my links. All I had to do to get rid of those was to disable the default text decoration on the links.</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">a</span><span class="p">.</span><span class="nc">sm-link</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#444444</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>Also note that to use Font Awesome you have to first sign up on the website. Then you get a snippet of code to add to your site.  </p>
+<p>The last little thing I added was enabling the use of emojis in my markdown posts. 😎</p>
+<p>Fortunately, I was able to find <a href="https://stackoverflow.com/questions/65646945/flask-flatpages-how-to-add-and-show-emojis-in-markdown-files/65654662#65654662">a Stackoverflow answer</a> that perfectly explained what I wanted to do.  </p>
+<p>I just had to pip install the <a href="https://pypi.org/project/emoji/">emoji package</a> in my environment, then <code>import emoji</code> and add the following code in my application file.</p>
+<div class="codehilite"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">template_filter</span><span class="p">(</span><span class="s1">&#39;emojify&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">emoji_filter</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">emoji</span><span class="o">.</span><span class="n">emojize</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">use_aliases</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>I included 'use_aliases=True' which adds a few more common emoji aliases in addition to those on the <a href="https://unicode.org/emoji/charts/full-emoji-list.html">unicode.org emoji list</a>.  </p>
+<p>The code above that uses <code>emoji.emojize</code> is actually a custom Jinja filter. If you are building a website similar to mine that uses Jinja to render posts in a via a template, you are probably already using another Jinja filter called <code>safe</code> on your posts that tells the template engine that it is 'safe' to render the html that is passed through it. To render the emojis, I just had to add the <code>emojify</code> filter, defined in the code above, in front of the <code>safe</code> filter on my posts.  </p>
+<div class="codehilite"><pre><span></span><code><span class="cp">{{</span> <span class="nv">post.html</span><span class="o">|</span><span class="nf">emojify</span><span class="o">|</span><span class="nf">safe</span> <span class="cp">}}</span><span class="x"></span>
+</code></pre></div>
+
+<p>You can learn more about Jinja filters <a href="https://flask.palletsprojects.com/en/2.0.x/templating/#registering-filters">here</a>.  </p>
+<p>Well, that just about covers everything I learned while building this site. The only other things I plan to do in the future is add comment sections to my posts (most likely using Disqus) and pagination once I have a larger number of posts.  </p>
+<p>I truly enjoyed the time I spent on this project and I'm really happy with how much I learned in the process. Flask is great, and I'm looking forward to using to build dashboards and other small apps in the future. And now I have my own custom personal website too. Good stuff.  </p>
+<p>My next post will cover how I went about deploying this site on the web.  </p>
+<div style="line-height:80%;">
+  <br>
+</div>
+
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    
+    var pathArray = window.location.pathname.split('/');
+    var secondLevelLocation = pathArray[2];
+
+    var disqus_config = function () {
+    this.page.url = window.location;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = secondLevelLocation; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://paulhussey.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+          </div>
+          <div class="col-md-4">
+            <div class="content-section">
+              <h3>Resources</h3>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-light">
+                    <a class="resources-title" href="/reference/talent_management.html">Talent Management and Recruiting</a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a class="resources-title" href="/reference/programming.html">Programming and Data Analytics</a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a class="resources-title" href="/reference/life_in_korea.html">Life in Korea</a>
+                  </li>
+                </ul>
+                <div style="line-height:50%;">
+                  <br>
+                </div>
+              <h3>Projects</h3>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-light">
+                    <a class="resources-title" href="https://github.com/pthussey/DataStats">DataStats</a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a class="resources-title" href="https://github.com/pthussey/FlaskWebsiteCode">FlaskWebsiteCode</a>
+                  </li>
+            </div>
+          </div>
+        </div>
+      </main>
+     
+    <!-- Footer -->
+    <footer class="footer bg-nav-footer">
+      <div class="container text-center">       
+        <div id="sm-links">
+          <!--Linkedin -->
+          <a href="https://www.linkedin.com/in/pthussey/" class="sm-link li-ic">
+            <i class="fab fa-linkedin fa-lg mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Github-->
+          <a href="https://github.com/pthussey" class="sm-link git-ic">
+            <i class="fab fa-github fa-lg fa-2x"> </i>
+          </a>
+        </div>
+        <p>Copyright © 2022: Paul Hussey</p>
+      </div>
+    </footer>
+    <!-- Footer -->
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <!--<script src="/static/main.js"></script>-->
+  </body>
+</html>
